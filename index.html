@@ -7,19 +7,22 @@
     <title>Mini ToDo Project</title>
 </head>
 <body>
-    <h1>Mini ToDo </h1>
-    <button onclick="" id="addTaskBtn">+ &nbsp; Add Task</button>
-    <ul id="taskList"></ul>
+    <section class="section">
+        <h1>Mini ToDo </h1>
+        <button onclick="modal.showModal()" id="addTaskBtn">+ &nbsp; Add Task</button>
+        <ul id="taskList"></ul>
+    </section>
 
     <!-- Modal -->
+     <!-- dialog: برای ایجاد مودال ها که بتوان با متدهای جاوااسکریپت آنها را مدیریت کرد -->
      <dialog id="taskModal">
-        <form action="" method="dialog">
+        <form id="form" action="" method="dialog">
             <h2 id="modalTitle">New task</h2>
             <input type="text" id="taskTitle" placeholder="Title">
             <textarea name="" id="taskText" placeholder="Description"></textarea>
             <menu>
                 <button id="saveBtn">Save</button>
-                <button onclick="">Cancel</button>
+                <button onclick="modal.close()">Cancel</button>
             </menu>
         </form>
      </dialog>

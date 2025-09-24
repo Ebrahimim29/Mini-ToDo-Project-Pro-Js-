@@ -4,20 +4,41 @@
     box-sizing: border-box;
 }
 
-body{
+.section{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:center;
-    gap: 3rem;
+    justify-content: center;
+    gap: 2rem;
     margin-top: 2rem;
 }
 
-#addTaskBtn{
+button{
     width: 8rem;
     height: 3rem;
     border-radius: 2rem;
     background:linear-gradient(to right, yellowgreen , red) ;
     border: none;
     cursor: pointer;
+}
+
+button:hover{
+    background: aqua;
+    color: blueviolet;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: auto;
+    width: 300px;
+    height: 300px;
+    background-color: rgba(128, 128, 128, 0.411);
+    border-radius: 20px;
+    box-shadow: 1rem 2rem 3rem inset rgba(0, 0, 0, 0.2) ;
+    text-align: center;
+    gap: 1rem;
 }
