@@ -1,37 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/style.css">
-    <link href="./output.css" rel="stylesheet">
-    <title>Mini ToDo Project</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To Do</title>
+  <link rel="stylesheet" href="/assets/style.css">
 </head>
+
 <body>
-    <section class="section">
-        <h1>Mini ToDo </h1>
-        <button onclick="modal.showModal()" id="addTaskBtn">+ &nbsp; Add Task</button>
-        <ul id="taskList"></ul>
-    </section>
 
-    <!-- Modal -->
-     <!-- dialog: برای ایجاد مودال ها که بتوان با متدهای جاوااسکریپت آنها را مدیریت کرد -->
-     <dialog id="taskModal">
-        <form id="form" action="" method="dialog">
-            <h2 id="modalTitle">New task</h2>
-            <input type="text" id="taskTitle" placeholder="Title">
-            <textarea name="" id="taskText" placeholder="Description"></textarea>
-            <menu>
-                <button id="saveBtn">Save</button>
-                <button onclick="modal.close()">Cancel</button>
-            </menu>
-        </form>
-     </dialog>
+  <h1>مینی ToDo</h1>
+  <button onclick="modal.showModal()" id="addTaskBtn">➕ &nbsp; اضافه کردن تسک</button>
+  <ul id="taskList"></ul>
+
+  <!-- Modal -->
+  <dialog id="taskModal">
+    <form method="dialog">
+      <h2 id="modalTitle">تسک جدید</h2>
+      <input type="text" id="taskTitle" placeholder="عنوان" />
+      <textarea id="taskText" placeholder="توضیحات"></textarea>
+      <menu>
+        <button id="saveBtn">ذخیره</button>
+        <button onclick="modal.close()">انصراف</button>
+      </menu>
+    </form>
+  </dialog>
 
 
 
 
-
-    <script src="/assets/main.js"></script>
+  <script src="/assets/main.js"></script>
 </body>
+
 </html>
