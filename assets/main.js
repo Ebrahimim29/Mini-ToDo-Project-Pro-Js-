@@ -13,13 +13,26 @@ const TaskManager = (function() {
     // دریافت مقادیر نام در فضای ذخیره سازی مرورگر
     let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
+    function save() { localStorage.setItem("tasks" , JSON.stringify(tasks));}
+
+    //  تعریف توابع موردنیاز برای کار با آرایه (میخواهیم یک آبجکت داشته باشیم از چند تابع)
+    // Singleton Object: آبجکتی که فقط یک بار ساخته میشه و همه جا همون یک نمونه استفاده میشه
+    return{
+        get: () =>tasks , //خروجی همان آرایه تسک هست
+        add: (task) =>{tasks.push(task); save();},
+    };
+
+
+
     // نوشتن یک تابع برای دسترسی به متغییر بالا و  در پایین اجرا بشود
-    return (task) => {
-        tasks.push(task);
-        console.log("Current tasks array:" , tasks);
-        localStorage.setItem("tasks" , JSON.stringify(tasks));
-        
-    }
+    // return {
+    //     addTask: (task) => {
+    //         tasks.push(task);
+    //         console.log("Current tasks array:" , tasks);
+    //         localStorage.setItem("tasks" , JSON.stringify(tasks));
+    //     },
+    //     getTasks: () => tasks
+    // }
 
 })();
 
@@ -57,6 +70,44 @@ saveBtn.onclick = (e) =>{
         date: new Date().toLocaleString("fa-IR")
     };
 
-    TaskManager(task);
+    TaskManager.add(task);
     modal.close();
+    render();
+};
+
+render();
+
+// تابع رندر برای بارگذاری مجدد اطلاعات (اضافه کردن li به ul)
+function render() {
+    taskList.innerHTML = "";
+    // console.log(TaskManager());
+    TaskManager.get().forEach((task, i) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            <div class = "task-header">
+                <span class = "task-title">${task.title}</span>
+                <div class = "task-action">
+                    <button class = "yellow fs_2x shadow"
+                    title = "Edit"
+                    onclick = "editTask(${i})">&#9998;</button>
+
+                    <button class = "red fs_2x "
+                    title = "Delete"
+                    onclick = "deleteTask(${i})">&#x1f5D1;</button>
+
+                    <button class = "green fs_2x "
+                    title = "Complete"
+                    onclick = "completeTask(${i} , 1)">&#x2611;</button>
+
+                    <button class = "orange fs_2x "
+                    title = "Un Complete"
+                    onclick = "completeTask(${i} , 2)">&#10006;</button>
+                </div>
+            </div>
+            <div>${task.text}</div>
+            <div class = "task-date">${task.date}</div>
+            `;
+        taskList.appendChild(li);
+    });
+    
 }
